@@ -2,10 +2,11 @@
 This application is a REST-based API that enables transfer of money from one bank account to another. The money transfers are inherently transactional in nature.
 
 ## Getting Started
-Just Git-Pull the files and run ```npm install``` then start the server using ```npm start```.
+Simply ```git clone``` the reository and run ```npm install``` then start the server using ```npm start```.
 
 ## Prerequisites
-NodeJS must be installed.
+NodeJS must be installed. 
+To access Postman link below, intall Postman application.
 
 ## Rest APIs
 ### Customer
@@ -39,3 +40,7 @@ The following rules apply:
 
 ### Postman Link
 - https://www.getpostman.com/collections/a816887d6151dac3a0ee
+
+
+### Sample Database for customer and account details
+Sample data has been provided in database folder.
