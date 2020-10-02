@@ -279,3 +279,8 @@ Error: listen EADDRINUSE: address already in use :::8080
     at Function.Module.runMain (internal/modules/cjs/loader.js:1043:10)
     at internal/main/run_main_module.js:17:11
 2020-10-01 17:38:38: error: 404 - 404 - Not Found - /favicon.ico - GET - ::ffff:127.0.0.1
+2020-10-02 10:54:09: error: 400 - fail - Transfer between accounts belonging to the same customer is not allowed. - /account/transaction - PUT - ::ffff:127.0.0.1
+2020-10-02 10:54:49: error: 400 - fail - Source account doesn't has sufficient amount for transfer. - /account/transaction - PUT - ::ffff:127.0.0.1
+2020-10-02 10:54:59: error: 400 - fail - Either one (or both) of the account id(s) doesn't exist. Kindly check. - /account/transaction - PUT - ::ffff:127.0.0.1
+2020-10-02 10:55:56: error: 400 - fail - Transaction unsuccessful because BasicSavings account's amount cannot exceed Rs. 50,000 - /account/transaction - PUT - ::ffff:127.0.0.1
+2020-10-02 10:58:33: error: 400 - fail - this customerId does not exist in records. Please register customer details first. - /account/ - POST - ::ffff:127.0.0.1

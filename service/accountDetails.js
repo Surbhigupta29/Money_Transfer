@@ -41,16 +41,18 @@ class AccountDetailsService {
     async doTransaction(data) {
         const { fromAccountId, toAccountId, amount } = data;
 
-        const { fromAccountData, toAccountData } = await this.validation(fromAccountId, toAccountId, amount);
+        const { fromAccountData, toAccountData } = await this.doValidate(fromAccountId, toAccountId, amount);
 
-        const newSrcBalance = await this.transactionAndUpdateAccounts(fromAccountId, toAccountId, amount, fromAccountData, toAccountData);
+        const totalDestBalanceBeforeTransaction = await this.accumulativeDestUserAccountAmount(toAccountData);
 
-        const totalDestBalance = await this.accumulativeDestUserAccountAmount(toAccountData);
+        const newSrcBalance = await this.commitTransactionAndUpdateAccounts(fromAccountId, toAccountId, amount, fromAccountData, toAccountData);
 
-        return { newSrcBalance, totalDestBalance, transferedAt: Date.now() }
+        const totalDestBalanceAfterTransaction = totalDestBalanceBeforeTransaction + amount;
+
+        return { newSrcBalance, totalDestBalance: totalDestBalanceAfterTransaction, transferedAt: Date.now() }
     }
 
-    async validation(fromAccountId, toAccountId, amount) {
+    async doValidate(fromAccountId, toAccountId, amount) {
 
         let [fromAccountData, toAccountData] = await Promise.all([
             AccountDetails.findById(fromAccountId), AccountDetails.findById(toAccountId)]);
@@ -70,7 +72,11 @@ class AccountDetailsService {
         return { fromAccountData, toAccountData };
     }
 
-    async transactionAndUpdateAccounts(fromAccountId, toAccountId, amount, fromAccountData, toAccountData) {
+    /**
+     *  Method to commit transaction. try catch  are provided to rollback the amount to source account 
+     *  If transaction fails on destination account. 
+     */
+    async commitTransactionAndUpdateAccounts(fromAccountId, toAccountId, amount, fromAccountData, toAccountData) {
 
         const srcDataToUpdate = { amountInPaisa: fromAccountData.amountInPaisa - amount };
         const destDataToUpdate = { amountInPaisa: toAccountData.amountInPaisa + amount }

@@ -516,3 +516,20 @@ Error: listen EADDRINUSE: address already in use :::8080
 2020-10-01 17:38:37: info: /account/ - GET
 2020-10-01 17:38:38: info: /favicon.ico - GET
 2020-10-01 17:38:38: error: 404 - 404 - Not Found - /favicon.ico - GET - ::ffff:127.0.0.1
+2020-10-02 10:48:54: info: Server is listening on 8080
+2020-10-02 10:48:57: info: MongoDB is connected
+2020-10-02 10:51:05: info: /account/ - POST
+2020-10-02 10:52:20: info: /account/transaction - PUT
+2020-10-02 10:53:26: info: /account/transaction - PUT
+2020-10-02 10:54:09: info: /account/transaction - PUT
+2020-10-02 10:54:09: error: 400 - fail - Transfer between accounts belonging to the same customer is not allowed. - /account/transaction - PUT - ::ffff:127.0.0.1
+2020-10-02 10:54:49: info: /account/transaction - PUT
+2020-10-02 10:54:49: error: 400 - fail - Source account doesn't has sufficient amount for transfer. - /account/transaction - PUT - ::ffff:127.0.0.1
+2020-10-02 10:54:59: info: /account/transaction - PUT
+2020-10-02 10:54:59: error: 400 - fail - Either one (or both) of the account id(s) doesn't exist. Kindly check. - /account/transaction - PUT - ::ffff:127.0.0.1
+2020-10-02 10:55:55: info: /account/transaction - PUT
+2020-10-02 10:55:56: error: 400 - fail - Transaction unsuccessful because BasicSavings account's amount cannot exceed Rs. 50,000 - /account/transaction - PUT - ::ffff:127.0.0.1
+2020-10-02 10:56:46: info: /account/transaction - PUT
+2020-10-02 10:58:11: info: /account/transaction - PUT
+2020-10-02 10:58:32: info: /account/ - POST
+2020-10-02 10:58:33: error: 400 - fail - this customerId does not exist in records. Please register customer details first. - /account/ - POST - ::ffff:127.0.0.1

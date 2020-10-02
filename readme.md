@@ -2,7 +2,9 @@
 This application is a REST-based API that enables transfer of money from one bank account to another. The money transfers are inherently transactional in nature.
 
 ## Getting Started
-Simply ```git clone``` the reository and run ```npm install``` then start the server using ```npm start```.
+- Simply ```git clone``` the reository and run ```npm install```
+- Create ```config.env``` file. Follow up with sample_config.env, it will help in creating it.
+- Start the server using ```npm start```.
 
 ## Prerequisites
 NodeJS must be installed. 
